@@ -62,12 +62,13 @@ class CustomCollate:
         images, labels = zip(*batch)
                 
         
-        return torch.stack(images), torch.tensor(labels).unsqueeze(1)
+        return torch.stack(images), torch.tensor(labels, dtype=torch.float32).unsqueeze(1)
 
 class TrainingLogger:
     def __init__(self, log_dir="logs"):
         # 创建日志目录
         os.makedirs(log_dir, exist_ok=True)
+        self.best_val_acc = 0.0
         self.log_dir = log_dir
         self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         self.log_file = os.path.join(log_dir, f"training_log_{self.timestamp}.json")
@@ -116,6 +117,16 @@ class TrainingLogger:
         self._save_log()
         return fold_result
     
+    def log_error(self, error_message):
+        """记录训练或评估中的错误"""
+        error_log = {
+            "error": error_message,
+            "timestamp": self.timestamp
+        }
+        self.history["errors"].append(error_log)
+        self._save_log()
+        return error_log
+
     def _save_log(self):
         """保存日志到文件"""
         with open(self.log_file, 'w') as f:
@@ -186,7 +197,13 @@ class DataLoader:
 
         self.transform = transforms.Compose([
             transforms.Resize((224, 224)),
+            transforms.RandomHorizontalFlip(),
+            transforms.RandomVerticalFlip(),
+            transforms.RandomRotation(10),
+            transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
+            transforms.RandomAffine(degrees=0, translate=(0.1, 0.1)),
             transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
     
     def get_loader(self, indices=None, shuffle=True):
@@ -288,7 +305,7 @@ def train_one_epoch(model, dataloader, criterion, optimizer, rank, device, sched
     total = 0
     
     # 使用tqdm创建进度条
-    pbar = tqdm(dataloader, desc=f"训练中rank{rank}")
+    pbar = tqdm(dataloader, desc=f"训练中")
     for i, (images, labels) in enumerate(pbar):
         try:
             images = images.to(device)
@@ -296,8 +313,8 @@ def train_one_epoch(model, dataloader, criterion, optimizer, rank, device, sched
             
             # 前向传播 - 直接通过模型，不需要分离编码器和预测头
             outputs = model(images)
-            predicted = (torch.sigmoid(outputs) > 0.5).float()
             loss = criterion(outputs, labels.float())
+            predicted = (torch.sigmoid(outputs) > 0.5).float()
             
             # 反向传播和优化
             optimizer.zero_grad()
@@ -321,10 +338,12 @@ def train_one_epoch(model, dataloader, criterion, optimizer, rank, device, sched
                 'loss': f'{current_loss:.4f}',
                 'acc': f'{current_acc:.2f}%'
             })
+            
         
         except Exception as e:
             print(f"训练中发生错误: {str(e)}")
             continue
+        
     
     # 计算平均损失和准确率
     epoch_loss = running_loss / len(dataloader)
@@ -355,29 +374,47 @@ def evaluate(model, dataloader, criterion, device):
     all_labels = []
     
     with torch.no_grad():
-        for images, labels in tqdm(dataloader, desc="评估中"):
+        pbar = tqdm(dataloader, desc=f"评估中")
+        for i, (images, labels) in enumerate(pbar):
             try:
                 images = images.to(device)
                 labels = labels.to(device)
                 
                 # 前向传播 - 直接通过模型，不需要分离编码器和预测头
                 outputs = model(images)
-                predicted = (torch.sigmoid(outputs) > 0.5).float()
                 loss = criterion(outputs, labels.float())
+                
+                # 修改预测逻辑，确保不会有溢出
+                # 使用torch.where代替条件表达式
+                probs = torch.sigmoid(outputs)
+                predicted = torch.where(probs >= 0.5, 
+                                      torch.ones_like(outputs, dtype=torch.float32), 
+                                      torch.zeros_like(outputs, dtype=torch.float32))
+                
+
             
                 # 统计损失和准确率
                 running_loss += loss.item()
                 total += labels.size(0)
                 correct += (predicted == labels.float()).sum().item()  # 修正为 labels.float()
                 
+                # 更新进度条
+                current_loss = running_loss / (i + 1)
+                current_acc = 100 * correct / total
+                pbar.set_postfix({
+                    'loss': f'{current_loss:.4f}',
+                    'acc': f'{current_acc:.2f}%'
+                })
+                
+                
                 # 保存预测结果和标签（可用于后续分析）
                 all_preds.extend(predicted.cpu().numpy())
                 all_labels.extend(labels.cpu().numpy())
-            
+                
             except Exception as e:
                 print(f"评估中发生错误: {str(e)}")
                 continue
-    
+            
     # 计算平均损失和准确率
     epoch_loss = running_loss / len(dataloader) if len(dataloader) > 0 else float('inf')
     epoch_acc = 100 * correct / total if total > 0 else 0

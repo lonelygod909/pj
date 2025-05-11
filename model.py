@@ -2,16 +2,11 @@ import torch
 import torch.nn as nn
 from predict_head import PredictHead
 import hiera
-
+import torchvision
 
 class HieraClassifier(nn.Module):
-    """
-    使用Hiera模型作为特征提取器（编码器）和PredictHead作为分类头（解码器）的分类器模型
-    """
     def __init__(self, num_classes, feature_dim=1000, hidden_dim=512, model_name='hiera_base_224', pretrained=True):
-        """
-        初始化HieraClassifier模型
-        
+        """        
         Args:
             num_classes: 分类类别数
             feature_dim: Hiera模型输出特征维度，默认为1000
@@ -21,19 +16,22 @@ class HieraClassifier(nn.Module):
         """
         super(HieraClassifier, self).__init__()
         
-        # 初始化编码器（Hiera模型）
         if model_name == 'hiera_base_224':
-            self.encoder = hiera.hiera_base_224(pretrained=pretrained)
+            # self.encoder = hiera.Hiera.from_pretrained("facebook/hiera_tiny_224.mae_in1k")
+            self.encoder = torchvision.models.convnext_tiny(pretrained=False)
         elif model_name == 'hiera_large_224':
-            self.encoder = hiera.hiera_large_224(pretrained=pretrained)
+            self.encoder = torchvision.models.resnet18(pretrained=False)
         elif model_name == 'hiera_huge_224':
-            self.encoder = hiera.hiera_huge_224(pretrained=pretrained)
+            self.encoder = torchvision.models.resnet50(pretrained=False)
+        elif model_name == 'hiera_base_384':
+            self.encoder = torchvision.models.mobilenet_v3_small(pretrained=False)
         else:
             raise ValueError(f"不支持的Hiera模型: {model_name}")
         
         # 初始化解码器（PredictHead）
         self.predict_head = PredictHead(feature_dim, num_classes, hidden_dim=hidden_dim)
         
+
     def forward(self, x):
         """
         前向传播
