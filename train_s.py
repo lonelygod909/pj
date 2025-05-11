@@ -320,9 +320,9 @@ def train_model(rank, world_size, port):
                 optimizer,
                 max_lr=[1e-3, 5e-3],  # 对应 optimizer 中不同参数组的最大 LR
                 total_steps=len(train_loader) * num_epochs,  # 总训练步数（必须精确）
-                pct_start=0.1,        # 前10%的训练步骤用于学习率从初始值升到最大值（预热阶段）
-                div_factor=25,        # 初始学习率 = max_lr / 25
-                final_div_factor=1000 # 最终学习率 = max_lr / (25 * 1000)
+                pct_start=0.3,        # 前10%的训练步骤用于学习率从初始值升到最大值（预热阶段）
+                div_factor=10,        # 初始学习率 = max_lr / 25
+                final_div_factor=100 # 最终学习率 = max_lr / (25 * 1000)
             )
 
             
