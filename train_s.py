@@ -318,11 +318,11 @@ def train_model(rank, world_size, port):
             # 使用简单的学习率调度器
             scheduler = torch.optim.lr_scheduler.OneCycleLR(
                 optimizer,
-                max_lr=[1e-3, 5e-3],  # 对应 optimizer 中不同参数组的最大 LR
+                max_lr=[5e-3, 1e-2],  # 对应 optimizer 中不同参数组的最大 LR
                 total_steps=len(train_loader) * num_epochs,  # 总训练步数（必须精确）
                 pct_start=0.3,        # 前10%的训练步骤用于学习率从初始值升到最大值（预热阶段）
                 div_factor=10,        # 初始学习率 = max_lr / 25
-                final_div_factor=100 # 最终学习率 = max_lr / (25 * 1000)
+                final_div_factor=250 # 最终学习率 = max_lr / (25 * 1000)
             )
 
             
