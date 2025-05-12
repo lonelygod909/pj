@@ -1,0 +1,251 @@
+使用端口 49089 进行分布式训练
+使用 2 个GPU进行训练，GPU列表:
+  GPU 0: Tesla V100S-PCIE-32GB
+    显存: 31.73 GB
+  GPU 1: Tesla V100S-PCIE-32GB
+    显存: 31.73 GB
+启动进程: Rank 0, PID=237704, PPID=237661
+Rank 0: 初始化进程组，PID=237704, PORT=49089
+Rank 0: 进程组初始化成功，使用 GPU 0
+
+开始训练折 1/5
+训练集大小: 176020, 验证集大小: 44005
+Fold 1 - 模型和优化器初始化完成
+启动进程: Rank 1, PID=237705, PPID=237661
+Rank 1: 初始化进程组，PID=237705, PORT=49089
+Rank 1: 进程组初始化成功，使用 GPU 1
+Epoch 1/16 - Train Loss: 0.4345, Train Acc: 80.47%, Val Loss: 0.3872, Val Acc: 83.75%
+保存模型: Fold 1, Epoch 1, Val Acc: 83.75%
+Epoch 2/16 - Train Loss: 0.3319, Train Acc: 86.01%, Val Loss: 0.3086, Val Acc: 87.11%
+保存模型: Fold 1, Epoch 2, Val Acc: 87.11%
+Epoch 3/16 - Train Loss: 0.2981, Train Acc: 87.77%, Val Loss: 0.2970, Val Acc: 88.08%
+保存模型: Fold 1, Epoch 3, Val Acc: 88.08%
+Epoch 4/16 - Train Loss: 0.2840, Train Acc: 88.72%, Val Loss: 0.2305, Val Acc: 91.65%
+保存模型: Fold 1, Epoch 4, Val Acc: 91.65%
+Epoch 5/16 - Train Loss: 0.2603, Train Acc: 89.69%, Val Loss: 0.2290, Val Acc: 90.92%
+Epoch 6/16 - Train Loss: 0.2473, Train Acc: 90.34%, Val Loss: 0.2324, Val Acc: 90.74%
+Epoch 7/16 - Train Loss: 0.2289, Train Acc: 91.28%, Val Loss: 0.2145, Val Acc: 92.15%
+保存模型: Fold 1, Epoch 7, Val Acc: 92.15%
+Epoch 8/16 - Train Loss: 0.2178, Train Acc: 91.76%, Val Loss: 0.1674, Val Acc: 93.74%
+保存模型: Fold 1, Epoch 8, Val Acc: 93.74%
+解冻编码器...
+Epoch 9/16 - Train Loss: 0.2039, Train Acc: 92.31%, Val Loss: 0.1665, Val Acc: 93.60%
+解冻编码器...
+Epoch 10/16 - Train Loss: 0.1887, Train Acc: 92.95%, Val Loss: 0.1560, Val Acc: 94.16%
+保存模型: Fold 1, Epoch 10, Val Acc: 94.16%
+解冻编码器...
+Epoch 11/16 - Train Loss: 0.1792, Train Acc: 93.38%, Val Loss: 0.1546, Val Acc: 94.74%
+保存模型: Fold 1, Epoch 11, Val Acc: 94.74%
+解冻编码器...
+Epoch 12/16 - Train Loss: 0.1694, Train Acc: 93.83%, Val Loss: 0.1294, Val Acc: 95.43%
+保存模型: Fold 1, Epoch 12, Val Acc: 95.43%
+解冻编码器...
+Epoch 13/16 - Train Loss: 0.1569, Train Acc: 94.38%, Val Loss: 0.1236, Val Acc: 95.64%
+保存模型: Fold 1, Epoch 13, Val Acc: 95.64%
+解冻编码器...
+Epoch 14/16 - Train Loss: 0.1502, Train Acc: 94.57%, Val Loss: 0.1172, Val Acc: 95.89%
+保存模型: Fold 1, Epoch 14, Val Acc: 95.89%
+解冻编码器...
+Epoch 15/16 - Train Loss: 0.1429, Train Acc: 94.99%, Val Loss: 0.1133, Val Acc: 96.08%
+保存模型: Fold 1, Epoch 15, Val Acc: 96.08%
+解冻编码器...
+Epoch 16/16 - Train Loss: 0.1400, Train Acc: 95.03%, Val Loss: 0.1124, Val Acc: 96.13%
+保存模型: Fold 1, Epoch 16, Val Acc: 96.13%
+Rank 0 (PID 237704) 关闭数据加载器
+Rank 0 (PID 237704) 内存占用: 1744.23 MB
+完成第 1 折训练，内存已清理
+
+开始训练折 2/5
+训练集大小: 176020, 验证集大小: 44005
+Fold 2 - 模型和优化器初始化完成
+Rank 1 (PID 237705) 关闭数据加载器
+Rank 1 (PID 237705) 内存占用: 1736.00 MB
+Epoch 1/16 - Train Loss: 0.4332, Train Acc: 80.54%, Val Loss: 0.3915, Val Acc: 82.10%
+保存模型: Fold 2, Epoch 1, Val Acc: 82.10%
+Epoch 2/16 - Train Loss: 0.3288, Train Acc: 86.15%, Val Loss: 0.3253, Val Acc: 86.98%
+保存模型: Fold 2, Epoch 2, Val Acc: 86.98%
+Epoch 3/16 - Train Loss: 0.2997, Train Acc: 87.79%, Val Loss: 0.3362, Val Acc: 85.81%
+Epoch 4/16 - Train Loss: 0.2778, Train Acc: 88.84%, Val Loss: 0.3161, Val Acc: 86.78%
+Epoch 5/16 - Train Loss: 0.2604, Train Acc: 89.79%, Val Loss: 0.2251, Val Acc: 91.03%
+保存模型: Fold 2, Epoch 5, Val Acc: 91.03%
+Epoch 6/16 - Train Loss: 0.2447, Train Acc: 90.45%, Val Loss: 0.2925, Val Acc: 89.81%
+Epoch 7/16 - Train Loss: 0.2328, Train Acc: 91.03%, Val Loss: 0.1862, Val Acc: 92.93%
+保存模型: Fold 2, Epoch 7, Val Acc: 92.93%
+Epoch 8/16 - Train Loss: 0.2165, Train Acc: 91.77%, Val Loss: 0.1803, Val Acc: 93.11%
+保存模型: Fold 2, Epoch 8, Val Acc: 93.11%
+解冻编码器...
+Epoch 9/16 - Train Loss: 0.2032, Train Acc: 92.27%, Val Loss: 0.1600, Val Acc: 94.09%
+保存模型: Fold 2, Epoch 9, Val Acc: 94.09%
+解冻编码器...
+Epoch 10/16 - Train Loss: 0.1909, Train Acc: 92.86%, Val Loss: 0.1501, Val Acc: 94.66%
+保存模型: Fold 2, Epoch 10, Val Acc: 94.66%
+解冻编码器...
+Epoch 11/16 - Train Loss: 0.1792, Train Acc: 93.44%, Val Loss: 0.1399, Val Acc: 95.00%
+保存模型: Fold 2, Epoch 11, Val Acc: 95.00%
+解冻编码器...
+Epoch 12/16 - Train Loss: 0.1669, Train Acc: 94.01%, Val Loss: 0.1308, Val Acc: 95.37%
+保存模型: Fold 2, Epoch 12, Val Acc: 95.37%
+解冻编码器...
+Epoch 13/16 - Train Loss: 0.1562, Train Acc: 94.37%, Val Loss: 0.1279, Val Acc: 95.60%
+保存模型: Fold 2, Epoch 13, Val Acc: 95.60%
+解冻编码器...
+Epoch 14/16 - Train Loss: 0.1474, Train Acc: 94.76%, Val Loss: 0.1191, Val Acc: 95.79%
+保存模型: Fold 2, Epoch 14, Val Acc: 95.79%
+解冻编码器...
+Epoch 15/16 - Train Loss: 0.1423, Train Acc: 94.97%, Val Loss: 0.1188, Val Acc: 95.81%
+保存模型: Fold 2, Epoch 15, Val Acc: 95.81%
+解冻编码器...
+Epoch 16/16 - Train Loss: 0.1417, Train Acc: 94.89%, Val Loss: 0.1164, Val Acc: 95.91%
+保存模型: Fold 2, Epoch 16, Val Acc: 95.91%
+Rank 0 (PID 237704) 关闭数据加载器
+Rank 0 (PID 237704) 内存占用: 1745.70 MB
+完成第 2 折训练，内存已清理
+
+开始训练折 3/5
+训练集大小: 176020, 验证集大小: 44005
+Fold 3 - 模型和优化器初始化完成
+Rank 1 (PID 237705) 关闭数据加载器
+Rank 1 (PID 237705) 内存占用: 1828.11 MB
+Epoch 1/16 - Train Loss: 0.4339, Train Acc: 80.62%, Val Loss: 0.4364, Val Acc: 79.85%
+保存模型: Fold 3, Epoch 1, Val Acc: 79.85%
+Epoch 2/16 - Train Loss: 0.3298, Train Acc: 86.16%, Val Loss: 0.3643, Val Acc: 85.17%
+保存模型: Fold 3, Epoch 2, Val Acc: 85.17%
+Epoch 3/16 - Train Loss: 0.2956, Train Acc: 88.01%, Val Loss: 0.4086, Val Acc: 84.55%
+Epoch 4/16 - Train Loss: 0.2790, Train Acc: 88.74%, Val Loss: 0.2442, Val Acc: 90.65%
+保存模型: Fold 3, Epoch 4, Val Acc: 90.65%
+Epoch 5/16 - Train Loss: 0.2614, Train Acc: 89.63%, Val Loss: 0.2123, Val Acc: 91.84%
+保存模型: Fold 3, Epoch 5, Val Acc: 91.84%
+Epoch 6/16 - Train Loss: 0.2461, Train Acc: 90.42%, Val Loss: 0.3295, Val Acc: 85.63%
+Epoch 7/16 - Train Loss: 0.2287, Train Acc: 91.15%, Val Loss: 0.1780, Val Acc: 93.42%
+保存模型: Fold 3, Epoch 7, Val Acc: 93.42%
+Epoch 8/16 - Train Loss: 0.2163, Train Acc: 91.80%, Val Loss: 0.1810, Val Acc: 93.06%
+解冻编码器...
+Epoch 9/16 - Train Loss: 0.2034, Train Acc: 92.45%, Val Loss: 0.1640, Val Acc: 93.98%
+保存模型: Fold 3, Epoch 9, Val Acc: 93.98%
+解冻编码器...
+Epoch 10/16 - Train Loss: 0.1894, Train Acc: 92.98%, Val Loss: 0.1868, Val Acc: 92.73%
+解冻编码器...
+Epoch 11/16 - Train Loss: 0.1797, Train Acc: 93.33%, Val Loss: 0.1405, Val Acc: 94.95%
+保存模型: Fold 3, Epoch 11, Val Acc: 94.95%
+解冻编码器...
+Epoch 12/16 - Train Loss: 0.1665, Train Acc: 93.97%, Val Loss: 0.1324, Val Acc: 95.17%
+保存模型: Fold 3, Epoch 12, Val Acc: 95.17%
+解冻编码器...
+Epoch 13/16 - Train Loss: 0.1580, Train Acc: 94.26%, Val Loss: 0.1249, Val Acc: 95.49%
+保存模型: Fold 3, Epoch 13, Val Acc: 95.49%
+解冻编码器...
+Epoch 14/16 - Train Loss: 0.1503, Train Acc: 94.62%, Val Loss: 0.1182, Val Acc: 95.77%
+保存模型: Fold 3, Epoch 14, Val Acc: 95.77%
+解冻编码器...
+Epoch 15/16 - Train Loss: 0.1429, Train Acc: 94.97%, Val Loss: 0.1210, Val Acc: 95.67%
+解冻编码器...
+Epoch 16/16 - Train Loss: 0.1403, Train Acc: 94.98%, Val Loss: 0.1165, Val Acc: 95.84%
+保存模型: Fold 3, Epoch 16, Val Acc: 95.84%
+Rank 0 (PID 237704) 关闭数据加载器
+Rank 0 (PID 237704) 内存占用: 1745.00 MB
+完成第 3 折训练，内存已清理
+
+开始训练折 4/5
+训练集大小: 176020, 验证集大小: 44005
+Fold 4 - 模型和优化器初始化完成
+Rank 1 (PID 237705) 关闭数据加载器
+Rank 1 (PID 237705) 内存占用: 1827.80 MB
+Epoch 1/16 - Train Loss: 0.4361, Train Acc: 80.39%, Val Loss: 0.3197, Val Acc: 86.37%
+保存模型: Fold 4, Epoch 1, Val Acc: 86.37%
+Epoch 2/16 - Train Loss: 0.3290, Train Acc: 86.17%, Val Loss: 0.3142, Val Acc: 86.97%
+保存模型: Fold 4, Epoch 2, Val Acc: 86.97%
+Epoch 3/16 - Train Loss: 0.2960, Train Acc: 87.84%, Val Loss: 0.4023, Val Acc: 82.50%
+Epoch 4/16 - Train Loss: 0.2799, Train Acc: 88.78%, Val Loss: 0.2827, Val Acc: 88.43%
+保存模型: Fold 4, Epoch 4, Val Acc: 88.43%
+Epoch 5/16 - Train Loss: 0.2675, Train Acc: 89.37%, Val Loss: 0.2425, Val Acc: 90.93%
+保存模型: Fold 4, Epoch 5, Val Acc: 90.93%
+Epoch 6/16 - Train Loss: 0.2469, Train Acc: 90.38%, Val Loss: 0.2733, Val Acc: 88.01%
+Epoch 7/16 - Train Loss: 0.2308, Train Acc: 91.14%, Val Loss: 0.2204, Val Acc: 91.01%
+保存模型: Fold 4, Epoch 7, Val Acc: 91.01%
+Epoch 8/16 - Train Loss: 0.2196, Train Acc: 91.66%, Val Loss: 0.2448, Val Acc: 90.01%
+解冻编码器...
+Epoch 9/16 - Train Loss: 0.2068, Train Acc: 92.31%, Val Loss: 0.1848, Val Acc: 93.02%
+保存模型: Fold 4, Epoch 9, Val Acc: 93.02%
+解冻编码器...
+Epoch 10/16 - Train Loss: 0.1931, Train Acc: 92.86%, Val Loss: 0.1493, Val Acc: 94.63%
+保存模型: Fold 4, Epoch 10, Val Acc: 94.63%
+解冻编码器...
+Epoch 11/16 - Train Loss: 0.1802, Train Acc: 93.41%, Val Loss: 0.1520, Val Acc: 94.26%
+解冻编码器...
+Epoch 12/16 - Train Loss: 0.1685, Train Acc: 93.93%, Val Loss: 0.1293, Val Acc: 95.45%
+保存模型: Fold 4, Epoch 12, Val Acc: 95.45%
+解冻编码器...
+Epoch 13/16 - Train Loss: 0.1599, Train Acc: 94.23%, Val Loss: 0.1243, Val Acc: 95.59%
+保存模型: Fold 4, Epoch 13, Val Acc: 95.59%
+解冻编码器...
+Epoch 14/16 - Train Loss: 0.1475, Train Acc: 94.70%, Val Loss: 0.1143, Val Acc: 96.07%
+保存模型: Fold 4, Epoch 14, Val Acc: 96.07%
+解冻编码器...
+Epoch 15/16 - Train Loss: 0.1448, Train Acc: 94.88%, Val Loss: 0.1139, Val Acc: 96.00%
+解冻编码器...
+Epoch 16/16 - Train Loss: 0.1398, Train Acc: 95.11%, Val Loss: 0.1144, Val Acc: 96.04%
+Rank 0 (PID 237704) 关闭数据加载器
+Rank 0 (PID 237704) 内存占用: 1858.01 MB
+完成第 4 折训练，内存已清理
+
+开始训练折 5/5
+训练集大小: 176020, 验证集大小: 44005
+Fold 5 - 模型和优化器初始化完成
+Rank 1 (PID 237705) 关闭数据加载器
+Rank 1 (PID 237705) 内存占用: 1829.30 MB
+Epoch 1/16 - Train Loss: 0.4375, Train Acc: 80.37%, Val Loss: 0.2759, Val Acc: 88.54%
+保存模型: Fold 5, Epoch 1, Val Acc: 88.54%
+Epoch 2/16 - Train Loss: 0.3321, Train Acc: 86.02%, Val Loss: 0.3563, Val Acc: 83.55%
+Epoch 3/16 - Train Loss: 0.2999, Train Acc: 87.69%, Val Loss: 0.3723, Val Acc: 83.02%
+Epoch 4/16 - Train Loss: 0.2862, Train Acc: 88.46%, Val Loss: 0.2495, Val Acc: 89.56%
+保存模型: Fold 5, Epoch 4, Val Acc: 89.56%
+Epoch 5/16 - Train Loss: 0.2669, Train Acc: 89.31%, Val Loss: 0.2631, Val Acc: 89.10%
+Epoch 6/16 - Train Loss: 0.2494, Train Acc: 90.24%, Val Loss: 0.2128, Val Acc: 91.53%
+保存模型: Fold 5, Epoch 6, Val Acc: 91.53%
+Epoch 7/16 - Train Loss: 0.2392, Train Acc: 90.81%, Val Loss: 0.2439, Val Acc: 90.12%
+Epoch 8/16 - Train Loss: 0.2217, Train Acc: 91.57%, Val Loss: 0.1741, Val Acc: 93.85%
+保存模型: Fold 5, Epoch 8, Val Acc: 93.85%
+解冻编码器...
+Epoch 9/16 - Train Loss: 0.2069, Train Acc: 92.29%, Val Loss: 0.1796, Val Acc: 93.11%
+解冻编码器...
+Epoch 10/16 - Train Loss: 0.1960, Train Acc: 92.76%, Val Loss: 0.1694, Val Acc: 93.71%
+解冻编码器...
+Epoch 11/16 - Train Loss: 0.1831, Train Acc: 93.27%, Val Loss: 0.1295, Val Acc: 95.52%
+保存模型: Fold 5, Epoch 11, Val Acc: 95.52%
+解冻编码器...
+Epoch 12/16 - Train Loss: 0.1715, Train Acc: 93.76%, Val Loss: 0.1315, Val Acc: 95.34%
+解冻编码器...
+Epoch 13/16 - Train Loss: 0.1599, Train Acc: 94.24%, Val Loss: 0.1200, Val Acc: 95.72%
+保存模型: Fold 5, Epoch 13, Val Acc: 95.72%
+解冻编码器...
+Epoch 14/16 - Train Loss: 0.1537, Train Acc: 94.52%, Val Loss: 0.1117, Val Acc: 96.08%
+保存模型: Fold 5, Epoch 14, Val Acc: 96.08%
+解冻编码器...
+Epoch 15/16 - Train Loss: 0.1470, Train Acc: 94.75%, Val Loss: 0.1132, Val Acc: 96.01%
+解冻编码器...
+Rank 1 (PID 237705) 关闭数据加载器
+Rank 1 (PID 237705) 内存占用: 1807.59 MB
+Rank 1 (PID 237705) 清理资源...
+PID 237705: 销毁进程组
+Rank 1 (PID 237705) 完成清理
+Epoch 16/16 - Train Loss: 0.1446, Train Acc: 94.93%, Val Loss: 0.1122, Val Acc: 96.10%
+保存模型: Fold 5, Epoch 16, Val Acc: 96.10%
+Rank 0 (PID 237704) 关闭数据加载器
+Rank 0 (PID 237704) 内存占用: 1892.63 MB
+完成第 5 折训练，内存已清理
+
+交叉验证结果汇总:
+mean_train_loss: 0.1413
+std_train_loss: 0.0018
+mean_train_acc: 94.9892
+std_train_acc: 0.0754
+mean_val_loss: 0.1144
+std_val_loss: 0.0019
+mean_val_acc: 96.0027
+std_val_acc: 0.1090
+
+最佳模型来自第 1 折，验证准确率: 96.1254
+已保存最终模型: final_model_s.pth
+Rank 0 (PID 237704) 清理资源...
+PID 237704: 销毁进程组
+Rank 0 (PID 237704) 完成清理
